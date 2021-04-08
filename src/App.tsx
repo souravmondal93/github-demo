@@ -1,24 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+import InputForm from './components/input-form';
+import { useFetch } from './hooks/fetch';
 import './App.css';
 
 function App() {
+  const [{data: reposData, isLoading: isReposQueryLoading, isError: isReposQueryError}, setUrl] = useFetch({
+    endpoint: '',
+    defaultResult: []
+  });
+
+  const submitForm = (event: any, form: any) => {
+    event.preventDefault();
+    const endpoint = `users/${form.username}/repos`;
+    setUrl(endpoint);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h2>Github Demo</h2>
       </header>
+      <InputForm submitHandler={submitForm} />
+
+      {isReposQueryError && <div>Something went wrong ...</div>}
+
+      {isReposQueryLoading ? (
+        <div>Loading ...</div>
+      ) : (
+        // <pre>{JSON.stringify(reposData, null, 2)}</pre>
+        <ul>
+          {reposData.map((repoDetails: any) => (
+            <li key={repoDetails.id}>
+              <a href={repoDetails.url}>{repoDetails.name}</a>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
