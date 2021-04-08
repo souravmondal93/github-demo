@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState, SyntheticEvent, FormEvent, KeyboardEvent } from 'react';
+import React, { FunctionComponent, SyntheticEvent } from 'react';
 import PropTypes from 'prop-types';
 
 type InputFormProps = {

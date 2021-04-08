@@ -1,4 +1,3 @@
-import React from 'react';
 import InputForm from './components/input-form';
 import { useFetch } from './hooks/fetch';
 import './App.css';
