@@ -1,12 +1,12 @@
 import React, { FunctionComponent, SyntheticEvent } from 'react';
 import PropTypes from 'prop-types';
 
-type InputFormProps = {
-  submitHandler: any
-};
-
 const initialFormData = {
   'username': ''
+};
+
+interface InputFormProps {
+  submitHandler: (event: SyntheticEvent, formData: typeof initialFormData) => void
 };
 
 const InputForm: FunctionComponent<InputFormProps> = ({ submitHandler }) => {

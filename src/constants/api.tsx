@@ -1,2 +1,2 @@
-export const GITHUB_API_URL = 'https://api.github.com/';
-export const API_TIMEOUT = 5000;
+export const GITHUB_API_URL: string = 'https://api.github.com/';
+export const API_TIMEOUT: number = 5000;
